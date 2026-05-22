@@ -78,9 +78,11 @@ if uploaded_file and groq_key:
             )
 
             # Vector DB
+            ids = [str(i) for i in range(len(chunks))]
             vectorstore = Chroma.from_documents(
-                chunks,
-                embeddings
+                documents=chunks,
+                embedding=embeddings,
+                ids=ids
             )
 
             # Retriever
